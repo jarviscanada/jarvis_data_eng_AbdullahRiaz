@@ -19,14 +19,14 @@ case $cmd in
 
   #Check if container already exists
   if [ $container_status -eq 0 ]; then
-		echo 'Container already exists'
-		exit 1
-	fi
+	echo 'Container already exists'
+	exit 1
+  fi
 
   #check # of CLI arguments
   if [ $# -ne 3 ]; then
-    echo 'Create requires username and password'
-    exit 1
+	echo 'Create requires username and password'
+	exit 1
   fi
 
   #Create container
@@ -39,9 +39,9 @@ case $cmd in
   start|stop)
 
   if [ $container_status -ne 0 ]; then
-     echo 'Container has not been created'
-	   exit 1
-	fi
+	echo 'Container has not been created'
+	exit 1
+  fi
 
   #Start or stop the container
 	docker container $cmd jrvs-psql
