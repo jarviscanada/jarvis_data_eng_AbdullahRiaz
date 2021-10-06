@@ -44,11 +44,11 @@ case $cmd in
   fi
 
   #Start or stop the container
-	docker container $cmd jrvs-psql
-	exit $?
-	;;
+  docker container $cmd jrvs-psql
+  exit $?
+  ;;
 
-	#If anything other than "start", "stop" or "create"
+  #If anything other than "start", "stop" or "create"
   *)
 	echo 'Illegal command'
 	echo 'Commands: start|stop|create'
