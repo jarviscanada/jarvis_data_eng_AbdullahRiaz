@@ -1,4 +1,4 @@
---Query 1
+--Query to group hosts by hardware info
 SELECT cpu_number,
        host_id,
        total_mem,
