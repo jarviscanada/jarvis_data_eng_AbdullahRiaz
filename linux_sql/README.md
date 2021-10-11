@@ -1,6 +1,6 @@
 # LINUX CLUSTER MONITORING AGENT
 
-##Introduction
+## Introduction
 
 **The monitoring agent tool enables the user to
 monitor nodes of a linux cluster. The tool
@@ -12,14 +12,14 @@ analyzed to generate reports for
 future resource planning 
 purposes (e.g. add/remove servers).**
 
-###Technologies Used:
+### Technologies Used:
 * Git
 * Docker
 * Bash
 * PostgreSQL
 * PSQL client tool
 
-##Quick Start
+## Quick Start
 **Start a psql instance using psql_docker.sh:**
 ```bash
 ./scripts/psql_docker.sh start
@@ -41,19 +41,19 @@ psql -h psql_host -U psql_user -d db_name -f sql/ddl.sql
 * * * * * bash /home/centos/dev/linux_sql/host_agent/scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password > /tmp/host_usage.log
 ```
 
-#Implementation
+# Implementation
 
-##Architecture
+## Architecture
 ![arch](./assets/arch.png)
 
-##Scripts & Usage
+## Scripts & Usage
 
-###Database & Table Initialization:
+### Database & Table Initialization:
 **In order to collect host hardware data and host usage**
 **data, a PostgreSQL instance must first be initialized alongside**
 **the creation of 'host_info' and 'host_usage' tables.**
 
-###psql_docker.sh:
+### psql_docker.sh:
 
 *Create a Docker PostgreSQL container
 if it doesn't exist using 'create' as argument to script.
@@ -69,11 +69,11 @@ as arguments to the script.*
 psql -h localhost -U postgres -d host_agent -f sql/ddl.sql
 ```
 
-###Monitoring Agent - host_info.sh, host_usage.sh and crontab:
+### Monitoring Agent - host_info.sh, host_usage.sh and crontab:
 **In order to record hardware specifications data and usage data in real time, a monitoring agent**
 **consisting of a 'host_info' and 'host_usage' script and a crontab job was developed.** 
 
-###host_info.sh:
+### host_info.sh:
 
 *Run on each node of the cluster once to collect
 hardware specifications data of the computer.*
@@ -84,7 +84,7 @@ hardware specifications data of the computer.*
 ./scripts/host_info.sh psql_host psql_port db_name psql_user psql_password
 ```
 
-###host_usage.sh:
+### host_usage.sh:
 
 *Run on each node of the cluster to collect resource
 usage data of the computer.*
@@ -94,7 +94,7 @@ usage data of the computer.*
 ./scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password
 ```
 
-###crontab.sh:
+### crontab.sh:
 
 *Run to enable repeated execution of 'host_usage' script in order
 to collect usage data every one minute increment.*
@@ -112,10 +112,10 @@ crontab -e
 cat /tmp/host_usage.log
 ```
 
-###Data Analysis:
+### Data Analysis:
 **Analyze the stored data to determine if more nodes/servers need to be added or removed.**
  
-###queries.sql:
+### queries.sql:
 
 *Contains SQL queries to help the user keep track of and manage the cluster.*
 
@@ -123,39 +123,39 @@ cat /tmp/host_usage.log
 #Run SQL queries on the stored data in 'host_info' and 'host_usage' tables to analyze it for sound decision making.
 psql -h localhost -U postgres -d host_agent -f sql/queries.sql
 ```
-##Database Modeling
+## Database Modeling
 
-###Host_info Schema:
+### Host_info Schema:
 
 id | hostname | cpu_number | cpu_architecture | cpu_model | cpu_mhz | L2_cache | total_mem | timestamp 
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 Serial, **Primary Key**, Not Null | Varchar, Unique, Not Null | Integer, Not Null | Varchar, Not Null | Varchar, Not Null | Float(3), Not Null | Integer, Not Null | Integer, Not Null | Timestamp, Not Null
 
-###Host_usage Schema:
+### Host_usage Schema:
 
 timestamp | host_id | memory_free | cpu_idle | cpu_kernel | disk_io | disk_available
 --- | --- | --- | --- | --- | --- | --- |
 Timestamp, Not Null | Serial, **Foreign Key (host_info - id)**, Not Null | Integer, Not Null | Integer, Not Null | Integer, Not Null | Integer, Not Null | Integer, Not Null |
 
-#Test
+# Test
 **A minimum viable product (MVP) had been created to test the tool on a single node. The idea behind this
 method is that if it works as expected on a single node in the cluster then it should work on all nodes.** 
 
-###Bash Scripts Test:
+### Bash Scripts Test:
 The bash scripts had been tested by executing the scripts manually and thereafter verifying the results by
 comparing them to what was expected.
 
-###Queries Test:
+### Queries Test:
 The SQL queries had been tested by comparing the results with test values.
 
-#Deployment
+# Deployment
 **The application had been deployed by using the following technologies:**
 * **Bash Script:** Bash scripts were created to automate specific processes, i.e. starting/stopping Docker container, extracting host data, etc.
 * **crontab:** An essential technology that allowed for real time monitoring of host resource usage.
 * **GitHub:** Allowed for version control of features via remote repository.
 * **Docker:** PostgreSQL database instance was initialized using Docker containers.
 
-#Improvements
+# Improvements
 **Some improvements that could be made to the tool:**
 1. Write a script that could handle hardware updates.
 2. Automate more processes to make it more user-friendly and more time efficient.
