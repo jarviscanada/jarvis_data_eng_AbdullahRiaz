@@ -3,14 +3,10 @@
 ## Introduction
 
 **The monitoring agent tool enables the user to
-monitor nodes of a linux cluster. The tool
-collects hardware specification data 
-and hardware usage data of each node in the cluster
-in real time and stores it in a 
-database. The data can be 
-analyzed to generate reports for 
-future resource planning 
-purposes (e.g. add/remove servers).**
+monitor nodes of a Linux cluster. The tool
+collects hardware specification data and hardware usage data of each node in the cluster
+in real-time and stores it in a 
+database. The data can be analyzed to generate reports for future resource planning purposes (e.g. add/remove servers).**
 
 ### Technologies Used:
 * Git
@@ -70,7 +66,7 @@ psql -h localhost -U postgres -d host_agent -f sql/ddl.sql
 ```
 
 ### Monitoring Agent - host_info.sh, host_usage.sh and crontab:
-**In order to record hardware specifications data and usage data in real time, a monitoring agent**
+**In order to record hardware specifications data and usage data in real-time, a monitoring agent**
 **consisting of a 'host_info' and 'host_usage' script and a crontab job was developed.** 
 
 ### host_info.sh:
@@ -96,7 +92,7 @@ usage data of the computer.*
 
 ### crontab.sh:
 
-*Run to enable repeated execution of 'host_usage' script in order
+*Run to enable repeated execution of the 'host_usage' script in order
 to collect usage data every one minute increment.*
 
 ```bash
@@ -120,7 +116,7 @@ cat /tmp/host_usage.log
 *Contains SQL queries to help the user keep track of and manage the cluster.*
 
 ```bash
-#Run SQL queries on the stored data in 'host_info' and 'host_usage' tables to analyze it for sound decision making.
+#Run SQL queries on the stored data in 'host_info' and 'host_usage' tables to analyze it for sound decision-making.
 psql -h localhost -U postgres -d host_agent -f sql/queries.sql
 ```
 ## Database Modeling
@@ -151,13 +147,13 @@ The SQL queries had been tested by comparing the results with test values.
 # Deployment
 **The application had been deployed by using the following technologies:**
 * **Bash Script:** Bash scripts were created to automate specific processes, i.e. starting/stopping Docker container, extracting host data, etc.
-* **crontab:** An essential technology that allowed for real time monitoring of host resource usage.
+* **crontab:** An essential technology that allowed for real-time monitoring of host resource usage.
 * **GitHub:** Allowed for version control of features via remote repository.
 * **Docker:** PostgreSQL database instance was initialized using Docker containers.
 
 # Improvements
 **Some improvements that could be made to the tool:**
 1. Write a script that could handle hardware updates.
-2. Automate more processes to make it more user-friendly and more time efficient.
-3. Create another table to list history of hardware failures that would help in determining node hardware upgrades.
+2. Automate more processes to make it more user-friendly and more time-efficient.
+3. Create another table to list the history of hardware failures that would help in determining node hardware upgrades.
 
