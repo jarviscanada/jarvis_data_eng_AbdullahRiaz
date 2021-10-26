@@ -1,5 +1,6 @@
 package ca.jrvs.apps.grep;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -13,7 +14,7 @@ public interface JavaGrep {
   void process() throws IOException;
 
   /**
-   * Traverse a given directory a return all files.
+   * Traverse a given directory and return all files.
    * @param rootDir input directory
    * @return files under the root directory
    */
@@ -22,7 +23,10 @@ public interface JavaGrep {
   /**
    * Read a file and return all the lines.
    *
-   * Explain FileReader, BufferedReader, and character encoding
+   * BufferedReader accepts any type of Reader(StringReader, FileReader, etc.)
+   * and hence capable of reading from any character input stream.
+   * Whereas, FileReader is capable of reading characters from files only.
+   * Usually, we wrap a FileReader with BufferedReader to read characters from files.
    *
    * @param inputFile File to be read
    * @return lines
