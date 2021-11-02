@@ -27,7 +27,7 @@ java -cp target/grep-1.0-SNAPSHOT.jar ca.jrvs.apps.grep.JavaGrepImp StringPatter
 * `./data`: The directory containing file to be searched.
 * `./out/grep.txt`: The specified file where the output of the results will be written to.
 
-##Implementation
+## Implementation
 ### Pseudocode:
 ```java
 matchedLines = []
