@@ -46,9 +46,4 @@ public class FibonacciNumbers {
     }
   }
 
-  public static void main(String args[]){
-
-    int result2 = FibonacciNumbers.fibDP(5);
-    System.out.println(result2);
-  }
 }
