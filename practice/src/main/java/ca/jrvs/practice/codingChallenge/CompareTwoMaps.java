@@ -9,11 +9,12 @@ public class CompareTwoMaps {
 
   /**
    * Use Collections Framework .equals method.
+   * <p>
+   * Big O - O(1) Justification: Time complexity will always be the same regardless of the number of
+   * elements.
    *
-   * Big O - O(1)
-   * Justification: Time complexity will always be the same regardless of the number of elements.
-   * @param m1 Map 1
-   * @param m2 Map 2
+   * @param m1  Map 1
+   * @param m2  Map 2
    * @param <K> Key
    * @param <V> Value of Key
    * @return true if maps match, false if not

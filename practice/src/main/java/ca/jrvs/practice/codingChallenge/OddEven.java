@@ -6,29 +6,29 @@ package ca.jrvs.practice.codingChallenge;
 public class OddEven {
 
   /**
-   * Big-O: O(1)
-   * Justification: Arithmetic Operation
+   * Big-O: O(1) Justification: Arithmetic Operation
+   *
    * @param i integer
    * @return 'even' if integer is even, 'odd' if integer is odd
    */
-  public String oddEvenMod(int i){
-    if(i % 2 == 0){
+  public String oddEvenMod(int i) {
+    if (i % 2 == 0) {
       return "even";
     }
     return "odd";
   }
 
   /**
-   * XOR operator
-   * Big-O: O(1)
-   * Justification: Arithmetic Operation
+   * XOR operator Big-O: O(1) Justification: Arithmetic Operation
+   *
    * @param i integer
    * @return 'even' if integer is even, 'odd' if integer is odd
    */
-  public String oddEvenBit(int i){
-    if ((i ^ 1) == i + 1)
+  public String oddEvenBit(int i) {
+    if ((i ^ 1) == i + 1) {
       return "even";
-    else
+    } else {
       return "odd";
+    }
   }
 }
