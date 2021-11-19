@@ -10,8 +10,9 @@ import java.util.Stack;
 public class ValidParenthesis {
 
   /**
-   * Big O: O(n)
-   * Justification: Simply traverse the given string one character at a time and push and pop operations on a stack take O(1) time.
+   * Big O: O(n) Justification: Simply traverse the given string one character at a time and push
+   * and pop operations on a stack take O(1) time.
+   *
    * @param s string to validate expression
    * @return true if expression is valid, false if not valid
    */
