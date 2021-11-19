@@ -9,8 +9,15 @@ public class ValidParenthesisTest {
 
   @Test
   public void isValid() {
-    String s = "[][]";
-    boolean expected = true;
+    String s = "[]{}[])";
+    boolean expected = false;
     Assert.assertEquals(expected,ValidParenthesis.isValid(s));
+  }
+
+  @Test
+  public void isValid2() {
+    String s = "[]{}[])";
+    boolean expected = false;
+    Assert.assertEquals(expected,ValidParenthesis.isValid2(s));
   }
 }
