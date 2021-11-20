@@ -15,6 +15,6 @@ public class FibonacciNumbersTest {
 
   @Test
   public void fibDP() {
-    Assert.assertEquals(5, FibonacciNumbers.fibDP(5));
+    Assert.assertEquals(55, FibonacciNumbers.fibDP(10));
   }
 }

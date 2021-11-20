@@ -9,7 +9,7 @@ public class ValidPalindromeTest {
 
   @Test
   public void isPalindrome() {
-    String s = "racecar";
+    String s = "Stanley Yelnats";
     boolean expected = true;
     Assert.assertEquals(expected,ValidPalindrome.isPalindrome(s));
   }

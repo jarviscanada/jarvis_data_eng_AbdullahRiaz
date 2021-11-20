@@ -29,7 +29,7 @@ public class FibonacciNumbers {
    * @return a value at the specified fib. number.
    */
   public static int fibDP(int n) {
-    int[] memo = new int[10];
+    int[] memo = new int[56];
     memo[0] = 0;
     memo[1] = 1;
     int result = 0;
