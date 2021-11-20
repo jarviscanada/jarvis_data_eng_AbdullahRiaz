@@ -1,7 +1,16 @@
 package ca.jrvs.practice.codingChallenge;
 
+/**
+ * ticket: https://www.notion.so/jarvisdev/Valid-Palindrome-a9f3ff7eadcf431a83bccd77ffd3735f
+ */
 public class ValidPalindrome {
 
+  /**
+   * Big O: O(n)
+   * Justification: Traversr
+   * @param s string
+   * @return true if palindrome, false if not
+   */
   public static boolean isPalindrome(String s) {
     //convert string to lowercase
     StringBuilder sb = new StringBuilder(s.toLowerCase());
