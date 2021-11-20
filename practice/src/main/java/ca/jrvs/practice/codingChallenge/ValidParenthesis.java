@@ -45,6 +45,11 @@ public class ValidParenthesis {
     return stack.isEmpty();
   }
 
+  /**
+   * Big O: O(n) Justification: iterate through string
+   * @param s string to validate expression
+   * @return true if expression is valid, false if not valid
+   */
   public static boolean isValid2(String s) {
     Stack<Character> stack = new Stack<>();
     for (int i = 0; i < s.length(); i++) {
