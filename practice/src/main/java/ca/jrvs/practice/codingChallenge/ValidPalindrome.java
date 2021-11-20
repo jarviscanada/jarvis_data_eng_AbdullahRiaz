@@ -7,7 +7,7 @@ public class ValidPalindrome {
 
   /**
    * Big O: O(n)
-   * Justification: Traversr
+   * Justification: Traverse a string of characters.
    * @param s string
    * @return true if palindrome, false if not
    */
