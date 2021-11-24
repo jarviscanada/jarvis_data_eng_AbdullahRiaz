@@ -5,7 +5,7 @@ github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_AbdullahRi
 
 # Introduce yourself, your academic and professional background.
 # What excites you about the software industry and your passion. At least 80 words
-summary: I earned a Bachelor's in Electrical Engineering from Ryerson University. The coursework had allowed me to develop my understanding of key concepts in software that are fundamental, such as object-oriented programming, data structures and algorithms. From the numerous projects and assignments that I have done, I developed and solidified these concepts alongside growing my communication skills by working in a teamwork environment. After working for an engineering consulting firm, I joined Jarvis as a Data Engineer, looking to apply my data engineering and software knowledge and experience and improve on data engineering/software development concepts and learn new concepts and technologies used today. At Jarvis, I applied my software fundamentals to projects while working with others in an Agile/Scrum environment. Working in a software role fulfils a passion. A passion to work in a software environment while collaborating with others to achieve a common goal. This passion stems from my curiosity about how things worked, always wanting to understand the underlying mechanics that result in something meaningful.
+summary: I earned a Bachelor's in Electrical Engineering from Ryerson University. The coursework had allowed me to develop my understanding of key concepts in software that are fundamental, such as object-oriented programming, data structures and algorithms. From the numerous projects and assignments I have done, I developed and solidified these concepts alongside growing my communication skills by working in a teamwork environment. After working for an engineering consulting firm, I joined Jarvis as a Data Engineer, looking to apply my data engineering and software knowledge and experience, improve on data engineering/software development concepts, and learn new concepts and technologies that are used today. At Jarvis, I applied my software fundamentals to projects while working with others in an Agile/Scrum environment. Working in a software role fulfils a passion. A passion to work in a software environment while collaborating with others to achieve a common goal. This passion stems from my curiosity about how things work, always understanding the underlying mechanics that result in something meaningful.
 
 # Group your skills by level.
 # Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
@@ -23,6 +23,7 @@ skills:
     - Docker
     - Jupyter Notebook
     - RDBMS/IBM DB2
+    - JDBC
     - GitFlow
     - GitHub
   # At least 5 skills
@@ -40,13 +41,13 @@ jarvis_projects:
     git_url: "/linux_sql"
     # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description: Developed a monitoring agent tool that allows the user to track host hardware specifications data and host resource usage data per node/server in a cluster of computers. The tool was implemented using Bash scripts to automate key processes, for example starting up a Docker container running PostgreSQL, creating 'host_info' and 'host_usage' tables to store data, etc. To track host resource usage data in real-time, 'crontab' was used. The data is stored on a PostgreSQL database which then can be analyzed to answer business questions. A PostgreSQL instance was provisioned by running a Docker container. Git was used to provide version control of the code and then uploaded to a remote repository on GitHub.
+    description: Developed a monitoring agent tool that allows the user to track host hardware specifications data and host resource usage data per node/server in a cluster of computers. The tool was implemented using Bash scripts to automate key processes, for example, starting up a Docker container running PostgreSQL, creating 'host_info' and 'host_usage' tables to store data, etc. To track host resource usage data in real-time, 'crontab' was used. The data is stored on a PostgreSQL database which then can be analyzed to answer business questions. A PostgreSQL instance was provisioned by running a Docker container. Git was used to providing version control of the code and then uploaded to a remote repository on GitHub.
   - name: "Core Java Apps"
     git_url: "/core_java"
     description:
       - "Twitter App: "
-      - "JDBC App: "
-      - "Grep App: "
+      - "JDBC App: Developed a Java-based application that allows the user to create a connection between a Java application and an RDBMS to run queries on a database for data analysis. The app was implemented using Java's Database Connectivity (JDBC) tool following the Data Access Object (DAO) design pattern. A 'CustomerDAO' class was implemented to enable CRUD operations on a PostgreSQL database, 'hplussport'. Thereafter, a Data Transfer Object (DTO), namely a 'Customer' class was created to represent the 'Customer' table in the database. Lastly, CRUD operations were performed in the 'JDBCExecutor' class to process the data."
+      - "Grep App: Developed a Java-based application that allows the user to search for a specified string in a text file and returns instances of the string pattern as output onto a specified file. The application was implemented using a 'JavaGrep' interface that had essential grep app functionality which was then put into implementation via a Java grep implementation class 'JavaGrepImp'. Certain libraries were used to enable searching of a file, reading of a file, and writing to a file. The Java Regex API was used to search for a specified string pattern in a specified file. Clean and helpful logs were generated through 'SLF4J Logger' to understand what errors were being triggered and what information is being processed. All the dependencies were downloaded and installed with Maven. Lastly, the app was packaged into an Uber-jar and then dockerized by building an image through a docker file and subsequently uploaded on docker hub."
 
 # List of personal or academic projects
 # Feel free to add more projects
@@ -76,7 +77,7 @@ professional_experience:
     duration: "2019-2020"
     description: "Worked in an engineering consulting environment as a part of an electrical engineering team to design electrical systems for buildings and write up reports. Coordinated with other disciplines such as Mechanical and Architectural team to develop designs in accordance to relevant codes and standards. Consulted with clients to determine best solutions that met clients requirements. Worked under senior engineer to ensure designs were in accordance to standards and were free from critical errors."
 
-#List of edcuation
+#List of education
 education: 
   - school_name: "Ryerson University"
     duration: "2013-2018"
