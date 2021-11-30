@@ -11,10 +11,10 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
 public class TwitterApiTest {
-  private static String CONSUMER_KEY= System.getenv("CONSUMER_KEY");
-  private static String CONSUMER_SECRET= System.getenv("CONSUMER_SECRET");
-  private static String ACCESS_TOKEN=System.getenv("ACCESS_TOKEN");
-  private static String TOKEN_SECRET= System.getenv("TOKEN_SECRET");
+  private static String CONSUMER_KEY= System.getenv("consumerKey");
+  private static String CONSUMER_SECRET= System.getenv("consumerSecret");
+  private static String ACCESS_TOKEN=System.getenv("accessToken");
+  private static String TOKEN_SECRET= System.getenv("tokenSecret");
 
   public static void main(String[] args) throws Exception {
     //setup oauth
@@ -22,13 +22,12 @@ public class TwitterApiTest {
     consumer.setTokenWithSecret(ACCESS_TOKEN, TOKEN_SECRET);
 
     //create an HTTP GET request
-    String status = "today is a good day!";
+    String status = "yummy dragon";
     PercentEscaper percentEscaper = new PercentEscaper("",false);
     HttpPost request = new HttpPost("https://api.twitter.com/1.1/statuses/update.json?status=" + percentEscaper.escape(status));
 
     //sign the request (add headers)
     consumer.sign(request);
-
     System.out.println("HTTP Request Headers:");
     Arrays.stream(request.getAllHeaders()).forEach(System.out::println);
 
