@@ -7,14 +7,14 @@ import org.apache.http.entity.StringEntity;
 public interface HttpHelper {
 
   /**
-   * Execute a HTTP Post call
+   * Execute an HTTP Post call
    * @param uri
    * @return
    */
   HttpResponse httpPost(URI uri);
 
   /**
-   * Execute a HTTP Get call
+   * Execute an HTTP Get call
    * @param uri
    * @return
    */
