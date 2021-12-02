@@ -1,4 +1,4 @@
-package ca.jrvs.apps.twitter.helper;
+package ca.jrvs.apps.twitter.dao.helper;
 
 import java.net.URI;
 import org.apache.http.HttpResponse;
@@ -7,14 +7,14 @@ import org.apache.http.entity.StringEntity;
 public interface HttpHelper {
 
   /**
-   * Execute an HTTP Post call
+   * Execute a HTTP Post call
    * @param uri
    * @return
    */
   HttpResponse httpPost(URI uri);
 
   /**
-   * Execute an HTTP Get call
+   * Execute a HTTP Get call
    * @param uri
    * @return
    */
