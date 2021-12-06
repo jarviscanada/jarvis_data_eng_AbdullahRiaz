@@ -47,7 +47,6 @@ public class TwitterHttpHelper implements HttpHelper {
     } else if (method == HttpMethod.POST) {
       HttpPost request = new HttpPost(uri);
       if (stringEntity != null) {
-        request.addHeader("content-type", "application/json");
         request.setEntity(stringEntity);
       }
       consumer.sign(request);
@@ -58,9 +57,9 @@ public class TwitterHttpHelper implements HttpHelper {
   }
 
   @Override
-  public HttpResponse httpPost(URI uri, StringEntity stringEntity) {
+  public HttpResponse httpPost(URI uri) {
     try {
-      return executeHttpRequest(HttpMethod.POST, uri, stringEntity);
+      return executeHttpRequest(HttpMethod.POST, uri, null);
     } catch (OAuthException | IOException e) {
       throw new RuntimeException("Failed to execute", e);
     }

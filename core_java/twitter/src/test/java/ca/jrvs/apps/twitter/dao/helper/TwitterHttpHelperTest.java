@@ -20,7 +20,7 @@ public class TwitterHttpHelperTest {
     HttpHelper httpHelper = new TwitterHttpHelper(consumerKey, consumerSecret, accessToken,
         tokenSecret);
     HttpResponse response = httpHelper.httpGet(
-        new URI("https://api.twitter.com/2/tweets/"));
+        new URI("https://api.twitter.com/1.1/statuses/show.json?id=1467642787386601480"));
     System.out.println(EntityUtils.toString(response.getEntity()));
   }
 
@@ -36,9 +36,7 @@ public class TwitterHttpHelperTest {
     HttpHelper httpHelper = new TwitterHttpHelper(consumerKey, consumerSecret, accessToken,
         tokenSecret);
     HttpResponse response = httpHelper.httpPost(
-        new URI("https://api.twitter.com/2/tweets"),new StringEntity("{\n"
-            + "    \"text\": \"It's snowing outside!\"\n"
-            + "}"));
+        new URI("https://api.twitter.com/1.1/statuses/update.json?status=hello_my_name_is_Abdullah"));
     System.out.println(EntityUtils.toString(response.getEntity()));
   }
 }

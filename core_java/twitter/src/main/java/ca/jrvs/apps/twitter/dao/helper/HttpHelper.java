@@ -11,7 +11,7 @@ public interface HttpHelper {
    * @param uri
    * @return
    */
-  HttpResponse httpPost(URI uri, StringEntity stringEntity);
+  HttpResponse httpPost(URI uri);
 
   /**
    * Execute a HTTP Get call
