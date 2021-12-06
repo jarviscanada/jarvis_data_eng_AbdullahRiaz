@@ -34,9 +34,7 @@ public class TwitterHttpHelper implements HttpHelper {
     consumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
     consumer.setTokenWithSecret(accessToken, tokenSecret);
 
-    /**
-     * Default = single connection
-     */
+    //Default = single connection
     httpClient = new DefaultHttpClient();
   }
 
@@ -49,6 +47,7 @@ public class TwitterHttpHelper implements HttpHelper {
     } else if (method == HttpMethod.POST) {
       HttpPost request = new HttpPost(uri);
       if (stringEntity != null) {
+        request.addHeader("content-type", "application/json");
         request.setEntity(stringEntity);
       }
       consumer.sign(request);
@@ -59,9 +58,9 @@ public class TwitterHttpHelper implements HttpHelper {
   }
 
   @Override
-  public HttpResponse httpPost(URI uri) {
+  public HttpResponse httpPost(URI uri, StringEntity stringEntity) {
     try {
-      return executeHttpRequest(HttpMethod.POST, uri, null);
+      return executeHttpRequest(HttpMethod.POST, uri, stringEntity);
     } catch (OAuthException | IOException e) {
       throw new RuntimeException("Failed to execute", e);
     }
