@@ -15,7 +15,7 @@ import java.util.List;
 public class Coordinates {
 
   @JsonProperty("coordinates")
-  private List<Double> coordinates;
+  private List<Double> coordinates = null;
   @JsonProperty("type")
   private String type;
 
