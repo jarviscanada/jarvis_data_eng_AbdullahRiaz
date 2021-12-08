@@ -5,6 +5,6 @@ target/
 *.ear
 *.logs
 *.iml
-**/.DS_Store
+*.DS_Store
 .idea/
 .eclipse
