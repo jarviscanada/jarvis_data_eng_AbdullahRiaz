@@ -43,4 +43,8 @@ public class JsonUtil {
     return (T) m.readValue(json, clazz);
   }
 
+  public static String toPrettyJson(Tweet tweet) throws JsonProcessingException {
+    ObjectMapper m = new ObjectMapper();
+    return m.writerWithDefaultPrettyPrinter().writeValueAsString(tweet);
+  }
 }

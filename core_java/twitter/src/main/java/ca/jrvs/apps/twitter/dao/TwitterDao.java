@@ -3,22 +3,20 @@ package ca.jrvs.apps.twitter.dao;
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.util.JsonUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class TwitterDao implements CrdDao<Tweet,String> {
+public class TwitterDao implements CrdDao<Tweet, String> {
 
   //URI constants
   private static final String API_BASE_URI = "https://api.twitter.com";
   private static final String POST_PATH = "/1.1/statuses/update.json";
   private static final String SHOW_PATH = "/1.1/statuses/show.json";
-  private static final String DELETE_PATH = "/1.1/statuses/destroy";
+  private static final String DELETE_PATH = "/1.1/statuses/destroy/";
 
   //URI symbols
   private static final String QUERY_SYM = "?";
@@ -39,29 +37,36 @@ public class TwitterDao implements CrdDao<Tweet,String> {
     return new URI(API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + tweet.getText());
   }
 
+  public URI getShowUri(String id) throws URISyntaxException {
+    return new URI(API_BASE_URI + SHOW_PATH + QUERY_SYM + "id" + EQUAL + id);
+  }
+
+  public URI getDelUri(String id) throws URISyntaxException {
+    return new URI(API_BASE_URI + DELETE_PATH + id + ".json");
+  }
+
   /**
    * Check response status code Convert Response Entity to Tweet
    *
-   * @param response Response Entity in String
+   * @param response           Response Entity in String
    * @param expectedStatusCode Expected Status Code
    * @return Tweet object
    */
-  private Tweet parseResponseBody(HttpResponse response, Integer expectedStatusCode){
+  private Tweet parseResponseBody(HttpResponse response, Integer expectedStatusCode) {
     Tweet tweet = null;
 
     //Check response status
     int status = response.getStatusLine().getStatusCode();
-    if(status != expectedStatusCode) {
+    if (status != expectedStatusCode) {
       try {
         System.out.println(EntityUtils.toString(response.getEntity()));
-      }
-      catch (IOException e){
+      } catch (IOException e) {
         System.out.println("Response has no entity");
       }
       throw new RuntimeException("Unexpected HTTP status:" + status);
     }
 
-    if (response.getEntity() == null){
+    if (response.getEntity() == null) {
       throw new RuntimeException("Empty response body");
     }
 
@@ -69,16 +74,14 @@ public class TwitterDao implements CrdDao<Tweet,String> {
     String jsonStr;
     try {
       jsonStr = EntityUtils.toString(response.getEntity());
-    }
-    catch (IOException e){
+    } catch (IOException e) {
       throw new RuntimeException("Failed to convert entity to String", e);
     }
 
     //Deserialize JSON string to Tweet object
-    try{
+    try {
       tweet = JsonUtil.toObjectFromJson(jsonStr, Tweet.class);
-    }
-    catch (IOException e ){
+    } catch (IOException e) {
       throw new RuntimeException("Unable to convert JSON str to Object", e);
     }
     return tweet;
@@ -90,24 +93,45 @@ public class TwitterDao implements CrdDao<Tweet,String> {
     URI uri;
     try {
       uri = getPostUri(entity);
-    } catch (URISyntaxException | UnsupportedEncodingException e) {
+    } catch (URISyntaxException e) {
       throw new IllegalArgumentException("Invalid tweet input", e);
     }
     //Execute HTTP Request
     HttpResponse response = httpHelper.httpPost(uri);
 
     //Validate response and deserialize response to Tweet object
-    return parseResponseBody(response,HTTP_OK);
+    return parseResponseBody(response, HTTP_OK);
   }
 
   @Override
   public Tweet findById(String s) {
+    //Construct URI
+    URI uri;
+    try {
+      uri = getShowUri(s);
+    } catch (URISyntaxException e) {
+      throw new IllegalArgumentException("Invalid tweet id", e);
+    }
+    //Execute HTTP Request
+    HttpResponse response = httpHelper.httpGet(uri);
 
-    return null;
+    //Validate response and deserialize response to Tweet object
+    return parseResponseBody(response, HTTP_OK);
   }
 
   @Override
   public Tweet deleteById(String s) {
-    return null;
+    //Construct URI
+    URI uri;
+    try {
+      uri = getDelUri(s);
+    } catch (URISyntaxException e) {
+      throw new IllegalArgumentException("Invalid tweet id", e);
+    }
+    //Execute HTTP Request
+    HttpResponse response = httpHelper.httpPost(uri);
+
+    //Validate response and deserialize response to Tweet object
+    return parseResponseBody(response, HTTP_OK);
   }
 }
