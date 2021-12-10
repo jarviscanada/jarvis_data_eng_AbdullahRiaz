@@ -2,7 +2,6 @@ package ca.jrvs.apps.twitter.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
@@ -10,7 +9,6 @@ import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.util.JsonUtil;
 import ca.jrvs.apps.twitter.util.TweetUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.google.gdata.util.common.base.PercentEscaper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,7 +34,7 @@ public class TwitterDaoIntTest {
 
   @Test
   public void create() throws JsonProcessingException {
-    String text = "I loveee #Anime! @skyz786";
+    String text = "I love #Winter! @skyz786";
     Double lat = 43.83671324;
     Double lon = -79.2511409;
     Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
@@ -58,7 +56,7 @@ public class TwitterDaoIntTest {
 
   @Test
   public void findById() throws JsonProcessingException {
-    String id = "1469335758741938176";
+    String id = "1469427878605594629";
     Tweet tweet = dao.findById(id);
     System.out.println(JsonUtil.toPrettyJson(tweet));
 
@@ -67,7 +65,7 @@ public class TwitterDaoIntTest {
 
   @Test
   public void deleteById() throws JsonProcessingException {
-    String id = "1469425821391675400";
+    String id = "1469427878605594629";
     Tweet tweet = dao.deleteById(id);
     System.out.println(JsonUtil.toPrettyJson(tweet));
 
