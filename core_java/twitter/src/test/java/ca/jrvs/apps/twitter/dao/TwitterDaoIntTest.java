@@ -10,6 +10,7 @@ import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.util.JsonUtil;
 import ca.jrvs.apps.twitter.util.TweetUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.gdata.util.common.base.PercentEscaper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,10 +36,12 @@ public class TwitterDaoIntTest {
 
   @Test
   public void create() throws JsonProcessingException {
-    String text = "@Hellooooooo";
+    String text = "Hello #World!!!";
+    PercentEscaper percentEscaper = new PercentEscaper("",false);
+    String txtPE = percentEscaper.escape(text);
     Double lat = 43.83671324;
     Double lon = -79.2511409;
-    Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
+    Tweet postTweet = TweetUtil.buildTweet(txtPE, lon, lat);
     System.out.println(JsonUtil.toPrettyJson(postTweet));
 
     Tweet tweet = dao.create(postTweet);
