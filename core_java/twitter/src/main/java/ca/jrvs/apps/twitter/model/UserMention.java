@@ -2,6 +2,7 @@ package ca.jrvs.apps.twitter.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import java.math.BigInteger;
 import java.util.List;
 
 @JsonInclude(Include.NON_NULL)
@@ -10,7 +11,7 @@ public class UserMention {
   private String name;
   private List<Integer> indices;
   private String screen_name;
-  private int id;
+  private BigInteger id;
   private String id_str;
 
   public String getName() {
@@ -37,11 +38,11 @@ public class UserMention {
     this.screen_name = screen_name;
   }
 
-  public int getId() {
+  public BigInteger getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(BigInteger id) {
     this.id = id;
   }
 

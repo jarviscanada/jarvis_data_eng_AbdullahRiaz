@@ -1,6 +1,8 @@
 package ca.jrvs.apps.twitter.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
@@ -24,7 +26,8 @@ public class TwitterDaoIntTest {
     System.out.println(consumerKey + "|" + consumerSecret + "|" + accessToken + "|" + tokenSecret);
 
     //Setup dependency
-    HttpHelper httpHelper = new TwitterHttpHelper(consumerKey,consumerSecret,accessToken,tokenSecret);
+    HttpHelper httpHelper = new TwitterHttpHelper(consumerKey, consumerSecret, accessToken,
+        tokenSecret);
 
     //Pass dependency
     this.dao = new TwitterDao(httpHelper);
@@ -32,10 +35,9 @@ public class TwitterDaoIntTest {
 
   @Test
   public void create() throws JsonProcessingException {
-    String hashTag = "#abc";
-    String text = "@UniverseIce hello " + hashTag + " " + System.currentTimeMillis();
-    Double lat = 1d;
-    Double lon = -1d;
+    String text = "@Hellooooooo";
+    Double lat = 43.83671324;
+    Double lon = -79.2511409;
     Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
     System.out.println(JsonUtil.toPrettyJson(postTweet));
 
@@ -44,18 +46,30 @@ public class TwitterDaoIntTest {
     assertEquals(text, tweet.getText());
 
     assertNotNull(tweet.getCoordinates());
-    assertEquals(2,tweet.getCoordinates().getCoordinates().size());
-    assertEquals(lon, tweet.getCoordinates().getCoordinates().get(0));
-    assertEquals(lat, tweet.getCoordinates().getCoordinates().get(1));
+    assertEquals(2, tweet.getCoordinates().getCoordinates().size());
+    assertEquals(lat, tweet.getCoordinates().getCoordinates().get(0));
+    assertEquals(lon, tweet.getCoordinates().getCoordinates().get(1));
 
-    assertTrue(hashTag.contains(tweet.getEntities().getHashtags().get(0).getText()));
+    System.out.println(JsonUtil.toPrettyJson(tweet));
+
+    //assertTrue(hashTag.contains(tweet.getEntities().getHashtags().get(0).getText()));
   }
 
   @Test
-  public void findById() {
+  public void findById() throws JsonProcessingException {
+    String id = "1469335758741938176";
+    Tweet tweet = dao.findById(id);
+    System.out.println(JsonUtil.toPrettyJson(tweet));
+
+    assertEquals(id, tweet.getId_str());
   }
 
   @Test
-  public void deleteById() {
+  public void deleteById() throws JsonProcessingException {
+    String id = "1469329214105169928";
+    Tweet tweet = dao.deleteById(id);
+    System.out.println(JsonUtil.toPrettyJson(tweet));
+
+    assertEquals(id, tweet.getId_str());
   }
 }

@@ -7,8 +7,10 @@ import java.util.List;
 
 public class TweetUtil {
 
+  private static Tweet tweet;
+
   public static Tweet buildTweet(String txt, Double longitude, Double latitude){
-    Tweet tweet = new Tweet();
+    tweet = new Tweet();
     List<Double> list = new ArrayList<>();
     tweet.setText(txt);
     list.add(longitude);

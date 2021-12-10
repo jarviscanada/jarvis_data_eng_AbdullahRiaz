@@ -1,10 +1,13 @@
 package ca.jrvs.apps.twitter.model;
 
 import ca.jrvs.apps.twitter.dao.TwitterDao;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.math.BigInteger;
+
 
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder({
@@ -19,12 +22,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "favorited",
     "retweeted"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Tweet {
 
   @JsonProperty("created_at")
   private String created_at;
   @JsonProperty("id")
-  private int id;
+  private BigInteger id;
   @JsonProperty("id_str")
   private String id_str;
   @JsonProperty("text")
@@ -53,12 +57,12 @@ public class Tweet {
   }
 
   @JsonProperty("id")
-  public int getId() {
+  public BigInteger getId() {
     return id;
   }
 
   @JsonProperty("id")
-  public void setId(int id) {
+  public void setId(BigInteger id) {
     this.id = id;
   }
 

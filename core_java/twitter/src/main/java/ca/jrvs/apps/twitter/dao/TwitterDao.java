@@ -34,7 +34,10 @@ public class TwitterDao implements CrdDao<Tweet, String> {
   }
 
   public URI getPostUri(Tweet tweet) throws URISyntaxException {
-    return new URI(API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + tweet.getText());
+    return new URI(
+        API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + tweet.getText() + AMPERSAND
+            + "lat" + EQUAL + tweet.getCoordinates().getCoordinates().get(0) + AMPERSAND + "long"
+            + EQUAL + tweet.getCoordinates().getCoordinates().get(1));
   }
 
   public URI getShowUri(String id) throws URISyntaxException {
