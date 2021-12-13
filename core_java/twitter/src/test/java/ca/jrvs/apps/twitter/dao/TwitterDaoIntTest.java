@@ -50,8 +50,6 @@ public class TwitterDaoIntTest {
     assertEquals(lon, tweet.getCoordinates().getCoordinates().get(1));
 
     System.out.println(JsonUtil.toPrettyJson(tweet));
-
-    //assertTrue(hashTag.contains(tweet.getEntities().getHashtags().get(0).getText()));
   }
 
   @Test
