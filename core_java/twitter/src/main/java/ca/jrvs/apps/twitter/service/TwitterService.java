@@ -2,13 +2,9 @@ package ca.jrvs.apps.twitter.service;
 
 import ca.jrvs.apps.twitter.dao.CrdDao;
 import ca.jrvs.apps.twitter.model.Tweet;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class TwitterService implements Service {
@@ -29,7 +25,7 @@ public class TwitterService implements Service {
           "Number of characters exceed 280 and/or latitude/longitude value exceeds range");
     }
 
-    //create tweet via dao
+    //Create tweet via dao
     return (Tweet) dao.create(tweet);
   }
 
@@ -65,11 +61,42 @@ public class TwitterService implements Service {
       throw new IllegalArgumentException("Incorrect id");
     }
 
-    //show tweet via dao
+    //Show tweet via dao
     Tweet tweet = (Tweet) dao.findById(id);
-    //Fields
-    Field field = tweet.getClass().getDeclaredField(Arrays.toString(fields));
-    return
+
+    //Set fields
+    List<String> fieldList = Arrays.asList(fields);
+    if (!fieldList.contains("created_at")) {
+      tweet.setCreated_at(null);
+    }
+    if (!fieldList.contains("id")) {
+      tweet.setId(null);
+    }
+    if (!fieldList.contains("id_str")) {
+      tweet.setId_str(null);
+    }
+    if (!fieldList.contains("text")) {
+      tweet.setText(null);
+    }
+    if (!fieldList.contains("entities")) {
+      tweet.setEntities(null);
+    }
+    if (!fieldList.contains("coordinates")) {
+      tweet.setCoordinates(null);
+    }
+    if (!fieldList.contains("retweet_count")) {
+      tweet.setRetweet_count(null);
+    }
+    if (!fieldList.contains("favorite_count")) {
+      tweet.setFavorite_count(null);
+    }
+    if (!fieldList.contains("favorited")) {
+      tweet.setFavorited(null);
+    }
+    if (!fieldList.contains("retweeted")) {
+      tweet.setRetweeted(null);
+    }
+    return tweet;
   }
 
   @Override

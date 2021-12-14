@@ -1,8 +1,9 @@
-package ca.jrvs.apps.twitter.dao;
+package ca.jrvs.apps.twitter.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
+import ca.jrvs.apps.twitter.dao.CrdDao;
+import ca.jrvs.apps.twitter.dao.TwitterDao;
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
 import ca.jrvs.apps.twitter.model.Tweet;
@@ -12,12 +13,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TwitterDaoIntTest {
+public class TwitterServiceIntTest {
 
-  private TwitterDao dao;
+  private CrdDao dao;
+  private Service service;
 
   @Before
-  public void setUp() {
+  public void setUp() throws Exception {
     String consumerKey = System.getenv("consumerKey");
     String consumerSecret = System.getenv("consumerSecret");
     String accessToken = System.getenv("accessToken");
@@ -30,43 +32,32 @@ public class TwitterDaoIntTest {
 
     //Pass dependency
     this.dao = new TwitterDao(httpHelper);
+    this.service = new TwitterService(dao);
   }
 
   @Test
-  public void create() throws JsonProcessingException {
-    String text = "Hello #World!!!!!!! @skyz786";
+  public void postTweet() throws JsonProcessingException {
+    String text = "Testing #Twitter REST API's!!! @skyz786";
     Double lat = 43.83671324;
     Double lon = -79.2511409;
     Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
     System.out.println(JsonUtil.toPrettyJson(postTweet));
 
-    Tweet tweet = dao.create(postTweet);
-
-    assertEquals(text, tweet.getText());
-
-    assertNotNull(tweet.getCoordinates());
-    assertEquals(2, tweet.getCoordinates().getCoordinates().size());
-    assertEquals(lat, tweet.getCoordinates().getCoordinates().get(1));
-    assertEquals(lon, tweet.getCoordinates().getCoordinates().get(0));
-
-    System.out.println(JsonUtil.toPrettyJson(tweet));
+    Tweet tweet = service.postTweet(postTweet);
   }
 
   @Test
-  public void findById() throws JsonProcessingException {
+  public void showTweet() throws JsonProcessingException {
     String id = "1470488103735500805";
-    Tweet tweet = dao.findById(id);
+    String[] fields = {"created_at","id","entities"};
+    Tweet tweet = service.showTweet(id, fields);
     System.out.println(JsonUtil.toPrettyJson(tweet));
-
-    assertEquals(id, tweet.getId_str());
   }
 
   @Test
-  public void deleteById() throws JsonProcessingException {
-    String id = "1469427878605594629";
-    Tweet tweet = dao.deleteById(id);
+  public void deleteTweets() throws JsonProcessingException {
+    String[] ids = {"1470813317157597184"};
+    Tweet tweet = (Tweet) service.deleteTweets(ids);
     System.out.println(JsonUtil.toPrettyJson(tweet));
-
-    assertEquals(id, tweet.getId_str());
   }
 }
