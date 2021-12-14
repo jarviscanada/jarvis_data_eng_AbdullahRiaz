@@ -16,8 +16,8 @@ public class TweetUtil {
     PercentEscaper percentEscaper = new PercentEscaper("",false);
     String txtPE = percentEscaper.escape(txt);
     tweet.setText(txtPE);
-    list.add(longitude);
     list.add(latitude);
+    list.add(longitude);
     Coordinates coordinates = new Coordinates();
     coordinates.setCoordinates(list);
     tweet.setCoordinates(coordinates);

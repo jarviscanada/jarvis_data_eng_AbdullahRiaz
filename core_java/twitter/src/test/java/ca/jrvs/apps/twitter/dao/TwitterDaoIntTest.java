@@ -34,7 +34,7 @@ public class TwitterDaoIntTest {
 
   @Test
   public void create() throws JsonProcessingException {
-    String text = "I love #Winter! @skyz786";
+    String text = "Hello #World!!! @skyz786";
     Double lat = 43.83671324;
     Double lon = -79.2511409;
     Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
@@ -46,15 +46,15 @@ public class TwitterDaoIntTest {
 
     assertNotNull(tweet.getCoordinates());
     assertEquals(2, tweet.getCoordinates().getCoordinates().size());
-    assertEquals(lat, tweet.getCoordinates().getCoordinates().get(0));
-    assertEquals(lon, tweet.getCoordinates().getCoordinates().get(1));
+    assertEquals(lat, tweet.getCoordinates().getCoordinates().get(1));
+    assertEquals(lon, tweet.getCoordinates().getCoordinates().get(0));
 
     System.out.println(JsonUtil.toPrettyJson(tweet));
   }
 
   @Test
   public void findById() throws JsonProcessingException {
-    String id = "1469427878605594629";
+    String id = "1470488103735500805";
     Tweet tweet = dao.findById(id);
     System.out.println(JsonUtil.toPrettyJson(tweet));
 
