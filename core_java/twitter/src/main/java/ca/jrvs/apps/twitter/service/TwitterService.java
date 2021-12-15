@@ -16,19 +16,6 @@ public class TwitterService implements Service {
     this.dao = dao;
   }
 
-  @Override
-  public Tweet postTweet(Tweet tweet) {
-    //Business logic:
-    //ex: text length, lat/long range, id format
-    if (!validatePostTweet(tweet)) {
-      throw new IllegalArgumentException(
-          "Number of characters exceed 280 and/or latitude/longitude value exceeds range");
-    }
-
-    //Create tweet via dao
-    return (Tweet) dao.create(tweet);
-  }
-
   private static boolean validatePostTweet(Tweet tweet) {
     if (tweet.getText().length() <= 280) {
       if (tweet.getCoordinates().getCoordinates().get(0) >= -90
@@ -53,6 +40,19 @@ public class TwitterService implements Service {
       }
     }
     return true;
+  }
+
+  @Override
+  public Tweet postTweet(Tweet tweet) {
+    //Business logic:
+    //ex: text length, lat/long range, id format
+    if (!validatePostTweet(tweet)) {
+      throw new IllegalArgumentException(
+          "Number of characters exceed 280 and/or latitude/longitude value exceeds range");
+    }
+
+    //Create tweet via dao
+    return (Tweet) dao.create(tweet);
   }
 
   @Override
