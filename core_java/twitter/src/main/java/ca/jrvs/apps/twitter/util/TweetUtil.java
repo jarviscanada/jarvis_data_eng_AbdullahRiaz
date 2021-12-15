@@ -13,11 +13,14 @@ public class TweetUtil {
   public static Tweet buildTweet(String txt, Double longitude, Double latitude) {
     tweet = new Tweet();
     List<Double> list = new ArrayList<>();
+
     PercentEscaper percentEscaper = new PercentEscaper("", false);
     String txtPE = percentEscaper.escape(txt);
     tweet.setText(txtPE);
+
     list.add(latitude);
     list.add(longitude);
+
     Coordinates coordinates = new Coordinates();
     coordinates.setCoordinates(list);
     tweet.setCoordinates(coordinates);
