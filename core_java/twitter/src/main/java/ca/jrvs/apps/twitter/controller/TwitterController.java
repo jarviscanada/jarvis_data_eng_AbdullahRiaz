@@ -19,7 +19,6 @@ public class TwitterController implements Controller {
     this.service = service;
   }
 
-
   @Override
   public Tweet postTweet(String[] args) {
     if (args.length != 3) {
@@ -61,9 +60,9 @@ public class TwitterController implements Controller {
     String id = args[1];
     String fields = args[2];
     String[] fieldsArray = fields.split(COMMA);
-    if (fieldsArray == null) {
+    if (StringUtils.isEmpty(id) || StringUtils.isEmpty(fields)) {
       throw new IllegalArgumentException(
-          "Fields argument is empty\nUSAGE: TwitterCLIApp show \"tweet_id\" [fields]");
+          "Tweet ID and/or tweet fields is empty\nUSAGE: TwitterCLIApp show \"tweet_id\" [fields]");
     }
 
     return service.showTweet(id, fieldsArray);
@@ -71,13 +70,16 @@ public class TwitterController implements Controller {
 
   @Override
   public List<Tweet> deleteTweet(String[] args) {
-    if (args.length != 3) {
+    if (args.length != 2) {
       throw new IllegalArgumentException(
           "USAGE: TwitterCLIApp delete [ids]");
     }
 
-    String tweet_ids =  args[1];
+    String tweet_ids = args[1];
     String[] ids = tweet_ids.split(COMMA);
+    if (StringUtils.isEmpty(tweet_ids)) {
+      throw new IllegalArgumentException("Tweet ID's are empty");
+    }
 
     return service.deleteTweets(ids);
   }
