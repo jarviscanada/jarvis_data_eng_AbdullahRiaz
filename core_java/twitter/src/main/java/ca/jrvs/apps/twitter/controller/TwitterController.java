@@ -7,6 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
+/**
+ * Controller implementation for Twitter.
+ */
 public class TwitterController implements Controller {
 
   private static final String COORD_SEP = ":";
@@ -26,10 +29,10 @@ public class TwitterController implements Controller {
           "USAGE: TwitterCLIApp post \"tweet_text\" \"latitude:longitude\"");
     }
 
-    String tweet_txt = args[1];
+    String tweetTxt = args[1];
     String coord = args[2];
     String[] coordArray = coord.split(COORD_SEP);
-    if (coordArray.length != 2 || StringUtils.isEmpty(tweet_txt)) {
+    if (coordArray.length != 2 || StringUtils.isEmpty(tweetTxt)) {
       throw new IllegalArgumentException(
           "Invalid location format and/or tweet is empty\nTwitterCLIApp post \"tweet_text\" \"latitude:longitude\"");
     }
@@ -45,7 +48,7 @@ public class TwitterController implements Controller {
           e);
     }
 
-    Tweet postTweet = TweetUtil.buildTweet(tweet_txt, lon, lat);
+    Tweet postTweet = TweetUtil.buildTweet(tweetTxt, lon, lat);
 
     return service.postTweet(postTweet);
   }
@@ -75,9 +78,9 @@ public class TwitterController implements Controller {
           "USAGE: TwitterCLIApp delete [ids]");
     }
 
-    String tweet_ids = args[1];
-    String[] ids = tweet_ids.split(COMMA);
-    if (StringUtils.isEmpty(tweet_ids)) {
+    String tweetIds = args[1];
+    String[] ids = tweetIds.split(COMMA);
+    if (StringUtils.isEmpty(tweetIds)) {
       throw new IllegalArgumentException("Tweet ID's are empty\nUSAGE: TwitterCLIApp delete [ids]");
     }
 

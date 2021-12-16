@@ -6,12 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.List;
 
+/**
+ * Coordinates Object - Tweet Child Object (DTO/POJO).
+ */
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder({
     "coordinates",
     "type"
 })
-
 public class Coordinates {
 
   @JsonProperty("coordinates")

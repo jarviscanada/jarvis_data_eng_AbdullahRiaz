@@ -7,14 +7,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 
+/**
+ * JSON utilities class to allow serialization of objects to JSON strings and deserialization of
+ * JSON strings to objects.
+ */
 public class JsonUtil {
 
   /**
-   * Convert a java object into JSON string
+   * Convert a java object into JSON string.
    *
    * @param object input object
    * @return JSON string
-   * @throws JsonProcessingException
+   * @throws JsonProcessingException exception
    */
   public static String toJson(Object object, boolean prettyJson, boolean includeNullValues)
       throws JsonProcessingException {
@@ -29,13 +33,13 @@ public class JsonUtil {
   }
 
   /**
-   * Parse JSON string into java object
+   * Parse JSON string into java object.
    *
    * @param json  JSON string
    * @param clazz object class
    * @param <T>   Type
    * @return Object
-   * @throws IOException
+   * @throws IOException exception
    */
   public static <T> T toObjectFromJson(String json, Class clazz) throws IOException {
     ObjectMapper m = new ObjectMapper();

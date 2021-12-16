@@ -10,6 +10,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * DAO implementation for Twitter.
+ */
 public class TwitterDao implements CrdDao<Tweet, String> {
 
   //URI constants
@@ -33,6 +36,13 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     this.httpHelper = httpHelper;
   }
 
+  /**
+   * Get the URI of twitter endpoint.
+   *
+   * @param tweet tweet object to obtain the URI from
+   * @return URI of POST tweet endpoint
+   * @throws URISyntaxException exception
+   */
   public URI getPostUri(Tweet tweet) throws URISyntaxException {
     return new URI(
         API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + tweet.getText() + AMPERSAND
@@ -40,16 +50,30 @@ public class TwitterDao implements CrdDao<Tweet, String> {
             + EQUAL + tweet.getCoordinates().getCoordinates().get(1));
   }
 
+  /**
+   * Get the URI of twitter endpoint.
+   *
+   * @param id Tweet ID to obtain the URI from
+   * @return URI of GET tweet endpoint
+   * @throws URISyntaxException exception
+   */
   public URI getShowUri(String id) throws URISyntaxException {
     return new URI(API_BASE_URI + SHOW_PATH + QUERY_SYM + "id" + EQUAL + id);
   }
 
+  /**
+   * Get the URI of twitter endpoint.
+   *
+   * @param id Tweet ID to obtain the URI from
+   * @return URI of POST tweet endpoint (note: Twitter API uses POST request to delete a tweet)
+   * @throws URISyntaxException exception
+   */
   public URI getDelUri(String id) throws URISyntaxException {
     return new URI(API_BASE_URI + DELETE_PATH + id + ".json");
   }
 
   /**
-   * Check response status code Convert Response Entity to Tweet
+   * Check response status code Convert Response Entity to Tweet.
    *
    * @param response           Response Entity in String
    * @param expectedStatusCode Expected Status Code

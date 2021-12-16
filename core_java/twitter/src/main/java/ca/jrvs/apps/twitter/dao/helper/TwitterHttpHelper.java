@@ -13,16 +13,19 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.http.HttpMethod;
 
+/**
+ * HttpHelper implementation for Twitter.
+ */
 public class TwitterHttpHelper implements HttpHelper {
 
   /**
-   * Dependencies are specified as private member variables
+   * Dependencies are specified as private member variables.
    */
   private OAuthConsumer consumer;
   private HttpClient httpClient;
 
   /**
-   * Constructor Setup dependencies using secrets
+   * Constructor Setup dependencies using secrets.
    *
    * @param consumerKey    consumer key
    * @param consumerSecret secret consumer key

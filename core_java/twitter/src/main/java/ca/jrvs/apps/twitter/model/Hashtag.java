@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.util.List;
 
+/**
+ * Hashtag Object - Part of Entities Object (DTO/POJO).
+ */
 @JsonInclude(Include.NON_NULL)
 public class Hashtag {
 

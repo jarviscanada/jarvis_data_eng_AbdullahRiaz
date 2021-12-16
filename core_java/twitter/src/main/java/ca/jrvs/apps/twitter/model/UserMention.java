@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.math.BigInteger;
 import java.util.List;
 
+/**
+ * UserMention Object - Part of Entities Object (DTO/POJO).
+ */
 @JsonInclude(Include.NON_NULL)
 public class UserMention {
 

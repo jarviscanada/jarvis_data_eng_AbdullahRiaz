@@ -7,7 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.math.BigInteger;
 
-
+/**
+ * Tweet Object (DTO/POJO).
+ */
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder({
     "created_at",
