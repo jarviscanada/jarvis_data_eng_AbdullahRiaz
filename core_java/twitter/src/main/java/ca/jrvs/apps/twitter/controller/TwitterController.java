@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 /**
  * Controller implementation for Twitter.
  */
+@org.springframework.stereotype.Controller
 public class TwitterController implements Controller {
 
   private static final String COORD_SEP = ":";

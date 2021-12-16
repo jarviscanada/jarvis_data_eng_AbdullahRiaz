@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Service implementation for Twitter.
  */
+@org.springframework.stereotype.Service
 public class TwitterService implements Service {
 
   private CrdDao dao;

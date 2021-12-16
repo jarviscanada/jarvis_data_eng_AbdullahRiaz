@@ -9,10 +9,12 @@ import java.net.URISyntaxException;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * DAO implementation for Twitter.
  */
+@Repository
 public class TwitterDao implements CrdDao<Tweet, String> {
 
   //URI constants
