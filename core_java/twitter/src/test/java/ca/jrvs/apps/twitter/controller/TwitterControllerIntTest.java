@@ -53,7 +53,7 @@ public class TwitterControllerIntTest {
 
   @Test
   public void deleteTweet() throws JsonProcessingException {
-    String[] delArgs = {"delete", "1471263163245109250,1471233012331433985"};
+    String[] delArgs = {"delete", "14712631632451092560"};
     List<Tweet> tweets = controller.deleteTweet(delArgs);
     for (Tweet tweet : tweets) {
       System.out.println(JsonUtil.toPrettyJson(tweet));

@@ -78,7 +78,7 @@ public class TwitterController implements Controller {
     String tweet_ids = args[1];
     String[] ids = tweet_ids.split(COMMA);
     if (StringUtils.isEmpty(tweet_ids)) {
-      throw new IllegalArgumentException("Tweet ID's are empty");
+      throw new IllegalArgumentException("Tweet ID's are empty\nUSAGE: TwitterCLIApp delete [ids]");
     }
 
     return service.deleteTweets(ids);

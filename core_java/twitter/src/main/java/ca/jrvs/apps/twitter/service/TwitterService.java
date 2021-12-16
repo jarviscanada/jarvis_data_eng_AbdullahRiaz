@@ -102,7 +102,7 @@ public class TwitterService implements Service {
   @Override
   public List<Tweet> deleteTweets(String[] ids) {
     if (!validateDelTweets(ids)) {
-      throw new IllegalArgumentException("Invalid id/ids");
+      throw new IllegalArgumentException("Invalid id/ids length, should be 19 characters");
     }
     List<Tweet> tweets = new ArrayList<>();
     for (String id : ids) {
