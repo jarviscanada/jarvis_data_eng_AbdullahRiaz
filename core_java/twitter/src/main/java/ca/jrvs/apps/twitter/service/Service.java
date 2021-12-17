@@ -4,6 +4,7 @@ import ca.jrvs.apps.twitter.model.Tweet;
 import java.util.List;
 
 /**
+ *
  * Service Layer.
  */
 public interface Service {

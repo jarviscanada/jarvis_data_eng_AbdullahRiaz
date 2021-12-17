@@ -47,7 +47,7 @@ public class TwitterServiceIntTest {
 
   @Test
   public void showTweet() throws JsonProcessingException {
-    String id = "1470923181112406017";
+    String id = "1471627315910172677";
     String[] fields = {"created_at", "id"};
     Tweet tweet = service.showTweet(id, fields);
     System.out.println(JsonUtil.toPrettyJson(tweet));
@@ -55,7 +55,7 @@ public class TwitterServiceIntTest {
 
   @Test
   public void deleteTweets() throws JsonProcessingException {
-    String[] ids = {"1469424871948050437", "1469422486714470404"};
+    String[] ids = {"1471627315910172677", "1471622334767411211"};
     List<Tweet> tweets = service.deleteTweets(ids);
     for (Tweet tweet : tweets) {
       System.out.println(JsonUtil.toPrettyJson(tweet));
