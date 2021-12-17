@@ -17,6 +17,8 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+
+    <skipTests>true</skipTests>
   </properties>
 
   <!--dependencies-->
@@ -63,42 +65,8 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.1</version>
-        <configuration>
-          <forkMode>always</forkMode>
-          <environmentVariables>
-            <consumerKey>jCjCK3wKaD6uxtMR20TI7KxNC</consumerKey>
-            <consumerSecret>y93Xhp78JAQZxdFqGG5x22mnx6qy5n0isarmj6Kfd0zRyO4e64</consumerSecret>
-            <accessToken>1448754296946929669-4Y5tcVXlmA6fTP7aYbxTAxP7AreRSB</accessToken>
-            <tokenSecret>YOTtGXEY7sNBapHz7GKRxZguRnv79WW5l3aYP4byDH8AZ</tokenSecret>
-          </environmentVariables>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <artifactId>maven-shade-plugin</artifactId>
-        <executions>
-          <!-- Run shade goal on package phase -->
-          <execution>
-            <configuration>
-              <transformers>
-                <!-- add Main-Class to manifest file -->
-                <transformer
-                  implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>ca.jrvs.apps.twitter.spring.TwitterCLISpringBoot</mainClass>
-                </transformer>
-              </transformers>
-            </configuration>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <phase>package</phase>
-          </execution>
-        </executions>
-        <groupId>org.apache.maven.plugins</groupId>
-        <version>2.3</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
