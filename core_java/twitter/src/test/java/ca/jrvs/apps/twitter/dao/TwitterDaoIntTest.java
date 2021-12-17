@@ -34,7 +34,7 @@ public class TwitterDaoIntTest {
 
   @Test
   public void create() throws JsonProcessingException {
-    String text = "Hello #World!!!!!!! @skyz786";
+    String text = "Hello #World!!!!!! @skyz786";
     Double lat = 43.83671324;
     Double lon = -79.2511409;
     Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
@@ -54,7 +54,7 @@ public class TwitterDaoIntTest {
 
   @Test
   public void findById() throws JsonProcessingException {
-    String id = "1470488103735500805";
+    String id = "1471840777294778369";
     Tweet tweet = dao.findById(id);
     System.out.println(JsonUtil.toPrettyJson(tweet));
 
@@ -63,7 +63,7 @@ public class TwitterDaoIntTest {
 
   @Test
   public void deleteById() throws JsonProcessingException {
-    String id = "1469427878605594629";
+    String id = "1471840777294778369";
     Tweet tweet = dao.deleteById(id);
     System.out.println(JsonUtil.toPrettyJson(tweet));
 

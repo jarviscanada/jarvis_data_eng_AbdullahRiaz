@@ -63,6 +63,21 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.1</version>
+        <configuration>
+          <forkMode>always</forkMode>
+          <environmentVariables>
+            <consumerKey>jCjCK3wKaD6uxtMR20TI7KxNC</consumerKey>
+            <consumerSecret>y93Xhp78JAQZxdFqGG5x22mnx6qy5n0isarmj6Kfd0zRyO4e64</consumerSecret>
+            <accessToken>1448754296946929669-4Y5tcVXlmA6fTP7aYbxTAxP7AreRSB</accessToken>
+            <tokenSecret>YOTtGXEY7sNBapHz7GKRxZguRnv79WW5l3aYP4byDH8AZ</tokenSecret>
+          </environmentVariables>
+        </configuration>
+      </plugin>
+
+      <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <executions>
           <!-- Run shade goal on package phase -->

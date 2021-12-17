@@ -36,7 +36,7 @@ public class TwitterServiceIntTest {
 
   @Test
   public void postTweet() throws JsonProcessingException {
-    String text = "Testing #Twitter REST API's!! @skyz786";
+    String text = "Testing #Twitter REST API @skyz786";
     Double lat = 43.83671324;
     Double lon = -79.2511409;
     Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
@@ -47,7 +47,7 @@ public class TwitterServiceIntTest {
 
   @Test
   public void showTweet() throws JsonProcessingException {
-    String id = "1471627315910172677";
+    String id = "1471837098328178691";
     String[] fields = {"created_at", "id"};
     Tweet tweet = service.showTweet(id, fields);
     System.out.println(JsonUtil.toPrettyJson(tweet));
@@ -55,7 +55,7 @@ public class TwitterServiceIntTest {
 
   @Test
   public void deleteTweets() throws JsonProcessingException {
-    String[] ids = {"1471627315910172677", "1471622334767411211"};
+    String[] ids = {"1471837098328178691"};
     List<Tweet> tweets = service.deleteTweets(ids);
     for (Tweet tweet : tweets) {
       System.out.println(JsonUtil.toPrettyJson(tweet));
