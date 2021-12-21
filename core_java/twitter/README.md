@@ -49,7 +49,6 @@ architecture, namely the DAO Layer, Service Layer, Controller Layer and the Main
 ## UML Diagram
 ![uml](./assets/uml.png)
 
-## explain each component(app/main, controller, service, DAO) (30-50 words each)
 ## TwitterDAO
 The Data Access Object layer (DAO) is where the standard CRUD operations are executed against the underlying storage, and in this case
 the Twitter REST API. It is in this layer where HTTP requests are made to the Twitter API endpoints by using an Http client implemented in the `TwitterHttpHelper` class. Endpoints like `/1.1/statuses/update.json` to make a `POST` request to post a `Tweet`, `/1.1/statuses/show.json` to make a `GET` request to show a `Tweet`, and lastly `/1.1/statuses/destroy/` endpoint to make a `POST` request to delete a `Tweet`. This layer also handles Tweet models (POJO's) that are utilized to make `Tweet` objects when making requests and receiving responses.
@@ -61,22 +60,43 @@ The Service layer is where the business logic of a `Tweet` is implemented. This 
 The Controller layer takes the user inputs from CLI and parses it. It then calls the service layer which returns the results as `Tweet` objects.
 
 ## TwitterCLIApp
-The App/Main layer has the main method that creates the necessary components and chains the dependencies by calling the constructors of the underlying layers, i.e. `TwitterController`, `TwitterService`, `TwitterDAO`. In this layer, there is run method that executes certain methods based on user inputs.
+The App/Main layer has the main method that creates the necessary components and chains the dependencies by calling the constructors of the underlying layers, i.e. `TwitterController`, `TwitterService`, `TwitterDAO`. In this layer, there is a run method that executes certain methods by calling the controller layer based on user inputs.
 
 ## Models
-Talk about tweet model
+The `Tweet` models are designed as POJO's/Data Transfer Objects (DTO's) for data persistence. The `Tweet` object implemented does not encapsulate all the fields of the official `Tweet` object from Twitter, rather a simplified version of it. As according to the Twitter's version 1.1 API's documentation, the Tweet object is the parent object of the `entities` object and `coordinates` object. Furthermore, in conjunction with Jackson, the http response objects were able to be parsed and deserialized into `Tweet` objects.
 
-## Spring
-- How you managed the dependencies using Spring?
+**The Tweet object fields of the simplified Tweet model as JSON:**
+```json
+//Simplified Tweet Object 
+{
+   "created_at":"Mon Feb 18 21:24:39 +0000 2019",
+   "id":1097607853932564480,
+   "id_str":"1097607853932564480",
+   "text":"test with loc223",
+   "entities":{
+      "hashtags":[],      //Object definition in official Twitter Docs
+      "user_mentions":[]  //Object definition in official Twitter Docs
+   },
+   "coordinates":null,    //Object definition in official Twitter Docs
+   "retweet_count":0,
+   "favorite_count":0,
+   "favorited":false,
+   "retweeted":false
+}
+```
+
+## Spring Boot
+The dependencies of this application were managed by using Spring Boot, a variation of the Spring framework. The components were set to be the `TwitterCLIApp` and `TwitterHttpHelper`, the controller was set to be `TwitterController`, service was set to be `TwitterService` and repository was set to be `TwitterDAO`.
 
 # Test
-How did you test you app using Junit and mockito?
+The application was tested using JUnit4 by running integration tests. The results of the tests were compared with the expected results for the methods within each layer.
 
-## Deployment
-How did you dockerize your app.
+# Deployment
+The application was first compiled and packaged using Maven and subsequently dockerized by building an image through a docker file. The image was then uploaded to a docker registry for distribution.
 
 # Improvements
-- Imporvement 1
-- Imporvement 2
-- Imporvement 3
-```
+1. Allow the application to post more than one tweet at a time. 
+   1. Instead of running the application 3 times to post 3 tweets, the application will run only once.
+2. Allow the application to show more than one tweet at a time. 
+   1. Instead of running the application 3 times to show 3 tweets, the application will run only once.
+3. Have the application utilize latest version of Twitter's REST API's (v2) instead of v1.1.
