@@ -4,11 +4,11 @@ I earned a Bachelor's in Electrical Engineering from Ryerson University. The cou
 
 ## Skills
 
-**Proficient:** Java, Python, Linux/Bash, RDBMS/PostgreSQL, Agile/Scrum, Git
+**Proficient:** Java, Python, Linux/Bash, RDBMS/PostgreSQL, Git, Agile/Scrum
 
-**Competent:** Docker, Jupyter Notebook, RDBMS/IBM DB2, JDBC, GitFlow, GitHub
+**Competent:** Docker, Maven, JUnit4, JDBC, RESTful API's, Spring/Spring Boot, Jupyter, GitFlow, GitHub
 
-**Familiar:** MongoDB, Cassandra, Apache Hadoop, Apache Spark, Google Cloud Platform/GCP, Amazon Web Services/AWS
+**Familiar:** SLF4J, MongoDB, Cassandra, Apache Hadoop, Apache Spark, Amazon Web Services/AWS
 
 ## Jarvis Projects
 
@@ -19,7 +19,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_AbdullahRi
 
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AbdullahRiaz/tree/master/core_java)]:
       
-  - Twitter App: 
+  - Twitter App: Developed a Java-based Twitter application that allows the user to post a Tweet, show a Tweet and delete a Tweet through the use of Twitter's REST APIs. The application makes HTTP requests to version 1.1 of Twitter's REST APIs. The HTTP requests were made possible by using Apache's HTTP client. The HTTP client contained HTTP methods that allowed for making GET/POST requests to the Twitter API endpoints. Since Twitter APIs require authentication to make requests, an 'OAuthConsumer' was used to sign these requests. When an HTTP response object was received, the body of the response was parsed and serialized into a JSON string which was then deserialized and mapped into the Tweet object fields using Jackson. To handle dependencies the Spring Boot framework was utilized. The application was packaged using Maven and then dockerized by building an image through a docker file and subsequently uploaded on docker hub.
   - JDBC App: Developed a Java-based application that allows the user to create a connection between a Java application and an RDBMS to run queries on a database for data analysis. The app was implemented using Java's Database Connectivity (JDBC) tool following the Data Access Object (DAO) design pattern. A 'CustomerDAO' class was implemented to enable CRUD operations on a PostgreSQL database, 'hplussport'. Thereafter, a Data Transfer Object (DTO), namely a 'Customer' class was created to represent the 'Customer' table in the database. Lastly, CRUD operations were performed in the 'JDBCExecutor' class to process the data.
   - Grep App: Developed a Java-based application that allows the user to search for a specified string in a text file and returns instances of the string pattern as output onto a specified file. The application was implemented using a 'JavaGrep' interface that had essential grep app functionality which was then put into implementation via a Java grep implementation class 'JavaGrepImp'. Certain libraries were used to enable searching of a file, reading of a file, and writing to a file. The Java Regex API was used to search for a specified string pattern in a specified file. Clean and helpful logs were generated through 'SLF4J Logger' to understand what errors were being triggered and what information is being processed. All the dependencies were downloaded and installed with Maven. Lastly, the app was packaged into an Uber-jar and then dockerized by building an image through a docker file and subsequently uploaded on docker hub.
 

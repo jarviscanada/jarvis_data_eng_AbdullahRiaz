@@ -29,7 +29,7 @@
     },
     {
       "description": [
-        "Twitter App: ",
+        "Twitter App: Developed a Java-based Twitter application that allows the user to post a Tweet, show a Tweet and delete a Tweet through the use of Twitter's REST APIs. The application makes HTTP requests to version 1.1 of Twitter's REST APIs. The HTTP requests were made possible by using Apache's HTTP client. The HTTP client contained HTTP methods that allowed for making GET/POST requests to the Twitter API endpoints. Since Twitter APIs require authentication to make requests, an 'OAuthConsumer' was used to sign these requests. When an HTTP response object was received, the body of the response was parsed and serialized into a JSON string which was then deserialized and mapped into the Tweet object fields using Jackson. To handle dependencies the Spring Boot framework was utilized. The application was packaged using Maven and then dockerized by building an image through a docker file and subsequently uploaded on docker hub.",
         "JDBC App: Developed a Java-based application that allows the user to create a connection between a Java application and an RDBMS to run queries on a database for data analysis. The app was implemented using Java's Database Connectivity (JDBC) tool following the Data Access Object (DAO) design pattern. A 'CustomerDAO' class was implemented to enable CRUD operations on a PostgreSQL database, 'hplussport'. Thereafter, a Data Transfer Object (DTO), namely a 'Customer' class was created to represent the 'Customer' table in the database. Lastly, CRUD operations were performed in the 'JDBCExecutor' class to process the data.",
         "Grep App: Developed a Java-based application that allows the user to search for a specified string in a text file and returns instances of the string pattern as output onto a specified file. The application was implemented using a 'JavaGrep' interface that had essential grep app functionality which was then put into implementation via a Java grep implementation class 'JavaGrepImp'. Certain libraries were used to enable searching of a file, reading of a file, and writing to a file. The Java Regex API was used to search for a specified string pattern in a specified file. Clean and helpful logs were generated through 'SLF4J Logger' to understand what errors were being triggered and what information is being processed. All the dependencies were downloaded and installed with Maven. Lastly, the app was packaged into an Uber-jar and then dockerized by building an image through a docker file and subsequently uploaded on docker hub."
       ],
@@ -70,18 +70,21 @@
   "skills": {
     "competent": [
       "Docker",
-      "Jupyter Notebook",
-      "RDBMS/IBM DB2",
+      "Maven",
+      "JUnit4",
       "JDBC",
+      "RESTful API's",
+      "Spring/Spring Boot",
+      "Jupyter",
       "GitFlow",
       "GitHub"
     ],
     "familiar": [
+      "SLF4J",
       "MongoDB",
       "Cassandra",
       "Apache Hadoop",
       "Apache Spark",
-      "Google Cloud Platform/GCP",
       "Amazon Web Services/AWS"
     ],
     "proficient": [
@@ -89,8 +92,8 @@
       "Python",
       "Linux/Bash",
       "RDBMS/PostgreSQL",
-      "Agile/Scrum",
-      "Git"
+      "Git",
+      "Agile/Scrum"
     ]
   },
   "summary": "I earned a Bachelor's in Electrical Engineering from Ryerson University. The coursework had allowed me to develop my understanding of key concepts in software that are fundamental, such as object-oriented programming, data structures and algorithms. From the numerous projects and assignments I have done, I developed and solidified these concepts alongside growing my communication skills by working in a teamwork environment. After working for an engineering consulting firm, I joined Jarvis as a Data Engineer, looking to apply my data engineering and software knowledge and experience, improve on data engineering/software development concepts, and learn new concepts and technologies that are used today. At Jarvis, I applied my software fundamentals to projects while working with others in an Agile/Scrum environment. Working in a software role fulfils a passion. A passion to work in a software environment while collaborating with others to achieve a common goal. This passion stems from my curiosity about how things work, always understanding the underlying mechanics that result in something meaningful."
