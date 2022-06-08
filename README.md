@@ -4,11 +4,11 @@ I earned a Bachelor's in Electrical Engineering from Ryerson University. The cou
 
 ## Skills
 
-**Proficient:** Java, Python, Linux/Bash, RDBMS/PostgreSQL, Git, Agile/Scrum
+**Proficient:** Java, Linux/Bash, SQL (PostgreSQL), Git, Agile/Scrum
 
-**Competent:** Docker, Maven, JUnit4, JDBC, RESTful API's, Spring/Spring Boot, Jupyter, GitFlow, GitHub
+**Competent:** HTML, CSS, Python, Jenkins, Terraform, Amazon Web Services/AWS (S3, DynamoDB, etc.), Datadog, Scala, Docker, Maven, JUnit4
 
-**Familiar:** SLF4J, MongoDB, Cassandra, Apache Hadoop, Apache Spark, Amazon Web Services/AWS
+**Familiar:** JavaScript, Kubernetes, Spring/Spring Boot, MongoDB, Spark
 
 ## Jarvis Projects
 
@@ -32,9 +32,9 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_AbdullahRi
 
 ## Professional Experiences
 
-**Data Engineer, Jarvis (2021-present)**: Worked in an Agile/Scrum environment to work on software projects with a team of Software Engineers. Worked as part of a team to design, implement, test and deploy features on a product. Daily scrum meetings were held to discuss issues and to set goals for the day. Weekly code reviews were done by senior developers to ensure code works as expected and to meet standards. Worked on features via tickets and uploaded code to GitHub for version control. To manage branches and features, the GitFlow methodology was followed on all projects.
+**Application Developer, National Bank of Canada (2022-present)**: Worked as a developer as part of an agile team to help in the development of current projects. Held daily scrum meetings to discuss any progress or impediment on a feature and to set goals for the day. Designed, implemented, tested and deployed features on a product. Developed on features using Java. Worked on pipeline project where the development of various pipeline features was done through Terraform and Jenkins that would setup the infrastructure on Amazon Web Services (AWS). Setup a Datadog dashboard to monitor metrics for applications. 
 
-**Electrical Designer, Spectra Engineering (2019-2020)**: Worked in an engineering consulting environment as a part of an electrical engineering team to design electrical systems for buildings and write up reports. Coordinated with other disciplines such as Mechanical and Architectural team to develop designs in accordance to relevant codes and standards. Consulted with clients to determine best solutions that met clients requirements. Worked under senior engineer to ensure designs were in accordance to standards and were free from critical errors.
+**Data Engineer Associate, Jarvis (2021-present)**: Worked in an Agile/Scrum environment to work on software projects with a team of Software Engineers. Worked as part of a team to design, implement, test and deploy features on a product. Daily scrum meetings were held to discuss progress, issues and to set goals for the day. Weekly code reviews were done by senior developers to ensure code works as expected and to meet standards. Worked on features via tickets and uploaded code to GitHub for version control. To manage branches and features, the GitFlow methodology was followed on all projects.
 
 
 ## Education
